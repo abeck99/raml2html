@@ -30,8 +30,7 @@
   {% markdown %}{{ item.description }}{% endmarkdown %}
 
   {% if item.schema %}
-    <p><strong>Schema</strong>:</p>
-    <pre><code>{{ item.schema | escape }}</code></pre>
+    {{ item.schema | display_schema }}
   {% endif %}
 
   {% if item.example %}

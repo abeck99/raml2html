@@ -66,6 +66,18 @@ function getDefaultConfig(mainTemplate, templatesPath) {
         return marked(md, {renderer: renderer});
       });
 
+      env.addFilter('display_schema', function(s)
+      {
+        try {
+          schema = JSON.parse(s);
+          // TODO: Check if html file exists first?
+          return "<iframe src=\""+schema['$ref'].replace('.json', '.html')+"\" style=\"width: 100%;height: 300px;\"></iframe>";
+        }
+        catch(err) {
+          return "<pre><code>"+env.getFilter('escape')(s)+"</code></pre>";
+        }
+      });
+
       // Add extra function for finding a security scheme by name
       ramlObj.securitySchemeWithName = function(name) {
         return ramlObj.securitySchemes[0][name];

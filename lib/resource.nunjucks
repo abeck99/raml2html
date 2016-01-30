@@ -132,7 +132,7 @@
 
                         {% if b.schema %}
                           <p><strong>Schema</strong>:</p>
-                          <pre><code>{{ b.schema | escape }}</code></pre>
+                          {{ b.schema | display_schema }}
                         {% endif %}
 
                         {% if b.example %}
@@ -166,7 +166,7 @@
 
                           {% if b.schema %}
                             <p><strong>Schema</strong>:</p>
-                            <pre><code>{{ b.schema | escape }}</code></pre>
+                            {{ b.schema | display_schema }}
                           {% endif %}
 
                           {% if b.example %}
